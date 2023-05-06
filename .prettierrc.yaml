@@ -1,0 +1,11 @@
+# Config options: https://prettier.io/docs/en/options.html
+
+arrowParens: avoid
+bracketSameLine: false
+bracketSpacing: true
+singleQuote: true
+semi: false
+printWidth: 110
+useTabs: false
+tabWidth: 2
+singleAttributePerLine: true

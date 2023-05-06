@@ -1,0 +1,12 @@
+# /node_modules/* and /bower_components/* ignored by default
+
+# Ignore mock and test files
+**/__mocks__/**
+**/__tests__/**
+**/node_modules/**
+**/native-base-theme/**
+
+# Ignore generated graphql types
+**/generated/**
+**/__generated__/**
+**/graphqlGlobalTypes.ts

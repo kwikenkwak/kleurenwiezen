@@ -1,0 +1,66 @@
+root: true
+parser: "@typescript-eslint/parser"
+plugins:
+  - "@typescript-eslint"
+  - "import"
+  - "prefer-arrow"
+  - "react-native"
+extends:
+  - "@react-native-community"
+  - "plugin:@typescript-eslint/recommended"
+  - "plugin:prettier/recommended" # Important needs to be last.
+rules:
+  "@typescript-eslint/no-unused-vars": "warn"
+  "@typescript-eslint/no-explicit-any": off # TODO fix legacy code so we can enable this
+  "@typescript-eslint/ban-types": off
+  "@typescript-eslint/no-shadow": "error"
+  "no-shadow": off
+  "react-native/no-unused-styles": "error"
+  "react-native/no-inline-styles": off
+  "no-console": ["error", { allow: ["warn", "error", "info"] }]
+#   #"prefer-arrow-callback": ["error", { allowNamedFunctions: true }] see https://github.com/prettier/eslint-plugin-prettier#arrow-body-style-and-prefer-arrow-callback-issue
+  "func-names": ["error", "always", { generators: "as-needed" }]
+  "func-style": ["error", "declaration", { allowArrowFunctions: true }]
+  "import/order":
+    [
+      "error",
+      {
+        groups:
+          [["builtin", "external", "internal"], "parent", ["sibling", "index"]],
+        "newlines-between": "always",
+        pathGroups:
+          [
+            { pattern: "app/assets/**", group: "internal", position: "after" },
+            {
+              pattern: "app/components/**",
+              group: "parent",
+              position: "before",
+            },
+            { pattern: "app/**", group: "internal", position: "after" },
+          ],
+        pathGroupsExcludedImportTypes: [],
+        alphabetize: { order: "asc", caseInsensitive: true },
+      },
+    ]
+  "prefer-arrow/prefer-arrow-functions":
+    [
+      "error",
+      {
+        disallowPrototype: true,
+        singleReturnOnly: false,
+        classPropertiesAllowed: false,
+      },
+    ]
+
+overrides:
+  -
+    files: 
+      - "*.graphql"
+    parser: "@graphql-eslint/eslint-plugin"
+    plugins: 
+      - "@graphql-eslint"
+    extends:
+      - "plugin:@graphql-eslint/operations-recommended"
+    rules:
+      "@graphql-eslint/no-deprecated": "warn"
+      "@graphql-eslint/naming-convention": "warn"
