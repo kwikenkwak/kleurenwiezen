@@ -54,12 +54,11 @@ export const RemoveGroup = ({ name }: RemoveGroupProps) => {
 
 const styles = StyleSheet.create({
   input: {
-    marginTop: 60,
+    marginTop: 10,
     fontSize: 20,
     borderBottomWidth: 3,
   },
   wrapper: {
-    justifyContent: 'space-between',
     height: '100%',
     gap: 10,
   },

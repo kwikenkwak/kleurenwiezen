@@ -1,6 +1,5 @@
 import React from 'react'
-import { View, Modal as ModalDefault, StyleSheet, ModalProps, Pressable } from 'react-native'
-import { colors } from './colors'
+import { Modal as ModalDefault, StyleSheet, ModalProps, Pressable } from 'react-native'
 
 const Modal = (props: ModalProps) => (
   <ModalDefault

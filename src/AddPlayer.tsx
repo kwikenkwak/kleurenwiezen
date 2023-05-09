@@ -59,7 +59,7 @@ export const AddPlayer = ({ add }: AddPlayerProps) => {
 const styles = StyleSheet.create({
   input: {
     marginTop: 10,
-    fontSize: 20,
+    fontSize: 19,
     borderBottomWidth: 3,
   },
   wrapper: {
