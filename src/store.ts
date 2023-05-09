@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { PointsChange } from './pointcalculation'
 import { createStore } from './zustandHelper'
 
@@ -95,7 +94,7 @@ export const useCurrentGame = () => {
   const addPoints = (points: PointsChange) => {
     const newPlayers: Player[] = []
     players.forEach(p => {
-      newPlayers.push({ name: p.name, score: p.score + points[p.name] || 0 })
+      newPlayers.push({ name: p.name, score: p.score + (points[p.name] || 0) })
     })
     addState(newPlayers)
   }

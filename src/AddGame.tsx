@@ -3,7 +3,7 @@ import Button from './Button'
 import AddGameSvg from '../icons/addgame.svg'
 import Modal from './Modal'
 import PlayerChooserPage from './PlayerChooserPage'
-import { GameData } from './pointcalculation'
+import { GameData, getDefaultData } from './pointcalculation'
 import { useCurrentGame } from './store'
 import { GamemodeChooserPage } from './GamemodeChooserPage'
 import { createConditionalPages } from './conditionalPages'
@@ -19,14 +19,14 @@ export const AddGame = () => {
   const [currentPage, setCurrentPage] = useState(0)
 
   useEffect(() => {
-    setData(defaultData)
+    setData(getDefaultData(data[0], data))
   }, [previousPlayers])
 
   const toNext = () => {
     setCurrentPage(p => {
-      return p == 0 && (new Date().getTime() - new Date(lastPlayerChoose).getTime()) / 3_600_000 < 2
-        ? p + 2
-        : p + 1
+      const hoursPassedSincePlayerChoose =
+        (new Date().getTime() - new Date(lastPlayerChoose).getTime()) / 3_600_000
+      return p == 0 && hoursPassedSincePlayerChoose < 2 ? p + 2 : p + 1
     })
   }
   const toPrev = () => {
