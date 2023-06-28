@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react'
 import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import Button from './Button'
+import IconButton from './IconButton'
 import PrevSvg from '../icons/prev.svg'
 import NextSvg from '../icons/next.svg'
 import { colors } from './colors'
@@ -25,7 +25,7 @@ export const StandardModalPage = ({ title, toNext, toPrev, body }: StandardModal
         <View style={styles.bodyWrapper}>{body}</View>
         <View style={styles.buttons}>
           {toPrev ? (
-            <Button
+            <IconButton
               style={styles.prev}
               onPress={toPrev}
               icon={<PrevSvg />}
@@ -35,7 +35,7 @@ export const StandardModalPage = ({ title, toNext, toPrev, body }: StandardModal
           )}
           <View style={styles.separator} />
           {toNext ? (
-            <Button
+            <IconButton
               style={styles.next}
               onPress={toNext}
               icon={<NextSvg />}

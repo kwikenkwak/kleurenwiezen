@@ -9,7 +9,7 @@ import { colors, ripple, ripple_small } from './colors'
 import { AddGame } from './AddGame'
 import { Shadow } from 'react-native-shadow-2'
 import EditPlayer from './EditPlayer'
-import Button from './Button'
+import IconButton from './IconButton'
 
 interface PlayerScoreProps {
   player: Player
@@ -40,7 +40,7 @@ const PlayerScore = ({ player, remove, isWinner }: PlayerScoreProps) => {
                   {isWinner && <FlagSvg />}
                   <Text style={styles.name}>{player.name.toUpperCase()}</Text>
                 </View>
-                <Button
+                <IconButton
                   onPress={remove}
                   icon={<RemoveSvg />}
                 />

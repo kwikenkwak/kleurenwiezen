@@ -6,7 +6,7 @@ import Input from './Input'
 import Modal from './Modal'
 import { colors } from './colors'
 import StandardModalPage from './StandardModalPage'
-import Button from './Button'
+import IconButton from './IconButton'
 
 export interface AddPlayerProps {
   add: (player: Player) => void
@@ -23,7 +23,7 @@ export const AddPlayer = ({ add }: AddPlayerProps) => {
   }
   return (
     <>
-      <Button
+      <IconButton
         onPress={() => setModalVisible(true)}
         icon={<AddPersonSvg />}
       />
