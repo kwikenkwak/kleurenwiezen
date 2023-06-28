@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import IconButton from './IconButton'
+import Button from './Button'
 import AddGameSvg from '../icons/addgame.svg'
 import Modal from './Modal'
 import PlayerChooserPage from './PlayerChooserPage'
@@ -63,7 +63,7 @@ export const AddGame = () => {
 
   return (
     <>
-      <IconButton
+      <Button
         style={styles.button}
         iconSize={40}
         icon={<AddGameSvg style={styles.icon} />}

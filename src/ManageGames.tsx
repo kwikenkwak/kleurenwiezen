@@ -9,7 +9,6 @@ import { colors } from './colors'
 import { useGames } from './store'
 import AddGroup from './AddGroup'
 import RemoveGroup from './RemoveGroup'
-import IconButton from './IconButton'
 
 export const ManageGames = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -21,11 +20,9 @@ export const ManageGames = () => {
   }
   return (
     <>
-      <IconButton
-        onPress={() => setModalVisible(true)}
-        icon={<ManageGroupsSvg />}
-        rippleSize={26}
-      />
+      <Pressable onPress={() => setModalVisible(true)}>
+        <ManageGroupsSvg />
+      </Pressable>
       <Modal
         visible={modalVisible}
         onRequestClose={() => setModalVisible(false)}

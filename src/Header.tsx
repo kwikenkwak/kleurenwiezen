@@ -2,7 +2,7 @@ import React from 'react'
 import RedoSvg from '../icons/redo.svg'
 import UndoSvg from '../icons/undo.svg'
 import { StyleSheet, View } from 'react-native'
-import IconButton from './IconButton'
+import Button from './Button'
 import { Shadow } from 'react-native-shadow-2'
 import { useCurrentGame } from './store'
 import { colors } from './colors'
@@ -23,11 +23,11 @@ const Header = () => {
             <AddPlayer add={addPlayer} />
           </View>
           <View style={styles.buttonGroup}>
-            <IconButton
+            <Button
               icon={<UndoSvg />}
               onPress={() => canUndo && undo()}
             />
-            <IconButton
+            <Button
               icon={<RedoSvg />}
               onPress={() => canRedo && redo()}
             />
