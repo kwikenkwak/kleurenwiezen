@@ -1,8 +1,10 @@
 import React from 'react'
 import { Pressable, StyleSheet, Text, View } from 'react-native'
+
+import SelectedSvg from '../icons/selected.svg'
+
 import { colors } from './colors'
 import { calculatePoints, GameData, PointsChange } from './pointcalculation'
-import SelectedSvg from '../icons/selected.svg'
 import StandardModalPage from './StandardModalPage'
 
 export interface GameResultPageProps {

@@ -1,7 +1,9 @@
 import { PointsChange } from './pointcalculation'
 import { createStore } from './zustandHelper'
 
-export interface Settings {}
+export type Settings = {
+  // TODO
+}
 
 export interface Points {
   players: Player[]
@@ -55,7 +57,7 @@ export const getWinners = (players: Player[]) => {
     if (p.score > maxPoints) {
       maxNames = [p.name]
       maxPoints = p.score
-    } else if (p.score == maxPoints) {
+    } else if (p.score === maxPoints) {
       maxNames.push(p.name)
       maxPoints = p.score
     }
@@ -71,7 +73,7 @@ export const useCurrentGame = () => {
   const winners = getWinners(players)
 
   const addState = (newPlayers: Player[], resetLastPlayerChoose = false) => {
-    const newHistory = [...(historyIndex == -1 ? history : history.slice(0, historyIndex + 1)), newPlayers]
+    const newHistory = [...(historyIndex === -1 ? history : history.slice(0, historyIndex + 1)), newPlayers]
     set({
       games: {
         ...games,
@@ -100,11 +102,11 @@ export const useCurrentGame = () => {
   }
 
   const removePlayer = (name: string) => {
-    const newPlayers = players.filter(p => p.name != name)
+    const newPlayers = players.filter(p => p.name !== name)
     addState(newPlayers, true)
   }
-  const canRedo = historyIndex != -1 && historyIndex < history.length - 1
-  const canUndo = (historyIndex == -1 && history.length > 1) || (historyIndex > 0 && history.length)
+  const canRedo = historyIndex !== -1 && historyIndex < history.length - 1
+  const canUndo = (historyIndex === -1 && history.length > 1) || (historyIndex > 0 && history.length)
 
   const setPreviousPlayers = (newPlayers: string[]) => {
     set({
@@ -117,7 +119,7 @@ export const useCurrentGame = () => {
 
   const undo = () => {
     if (!canUndo) return
-    const newHistoryIndex = historyIndex == -1 ? history.length - 2 : historyIndex - 1
+    const newHistoryIndex = historyIndex === -1 ? history.length - 2 : historyIndex - 1
     const newPlayers = history[newHistoryIndex]
     set({
       games: {
@@ -142,7 +144,7 @@ export const useCurrentGame = () => {
         ...games,
         [currentGame]: {
           history,
-          historyIndex: newHistoryIndex == history.length - 1 ? -1 : newHistoryIndex,
+          historyIndex: newHistoryIndex === history.length - 1 ? -1 : newHistoryIndex,
           players: newPlayers,
           previousPlayers,
           lastPlayerChoose,
@@ -166,8 +168,8 @@ export const useCurrentGame = () => {
     })
   }
 
-  const editPlayers = (players: Player[]) => {
-    addState(players, true)
+  const editPlayers = (newPlayers: Player[]) => {
+    addState(newPlayers, true)
   }
 
   return {
@@ -197,7 +199,7 @@ export const useGames = () => {
     const newGames = { ...games }
     delete newGames[name]
     set({ games: newGames })
-    if (currentGame == name) {
+    if (currentGame === name) {
       setCurrentGame(Object.keys(newGames)[0])
     }
   }
@@ -226,4 +228,13 @@ export const useGames = () => {
   }
 }
 
-export const useLastPlayerChoose = () => {}
+export const useLastPlayerChoose = () => {
+  const { lastPlayerChoose, previousPlayers } = useCurrentGame()
+  const hoursPassedSincePlayerChoose =
+    (new Date().getTime() - new Date(lastPlayerChoose).getTime()) / 3_600_000
+
+  return {
+    previousPlayers,
+    skipPlayerChoosing: hoursPassedSincePlayerChoose < 2,
+  }
+}

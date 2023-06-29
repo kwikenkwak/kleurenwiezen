@@ -1,7 +1,8 @@
+import React from 'react'
+
+import { Multiselect } from './Multiselect'
 import { MiserieData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
-import React from 'react'
-import { Multiselect } from './Multiselect'
 
 export interface MiseriePageProps {
   data: MiserieData

@@ -1,8 +1,8 @@
+import React from 'react'
+
+import Choose from './Choose'
 import { AlleenData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
-import React from 'react'
-import { Multiselect } from './Multiselect'
-import Choose from './Choose'
 
 export interface AlleenPageProps {
   data: AlleenData
@@ -46,7 +46,7 @@ export const AlleenSlagenTarget = ({ data, setData, toNext, toPrev }: AlleenPage
       body={
         <Choose
           options={Array.from(Array(4).keys()).map(i =>
-            (Number(i) + (data[0] == 'alleen' ? 5 : 9)).toString()
+            (Number(i) + (data[0] === 'alleen' ? 5 : 9)).toString()
           )}
           onChoose={onChange}
         />

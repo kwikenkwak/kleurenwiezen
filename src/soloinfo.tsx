@@ -1,7 +1,8 @@
+import React from 'react'
+
+import Choose from './Choose'
 import { SoloData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
-import React from 'react'
-import Choose from './Choose'
 
 export interface SoloPageProps {
   data: SoloData
@@ -34,7 +35,7 @@ export const SoloSpeler = ({ data, setData, toNext, toPrev }: SoloPageProps) => 
 export const SoloGewonnen = ({ data, setData, toNext, toPrev }: SoloPageProps) => {
   const onChange = (opt: string) => {
     const newData = data.slice() as SoloData
-    newData[3] = opt == 'Ja' ? true : false
+    newData[3] = opt === 'Ja' ? true : false
     toNext()
     setData(newData)
   }

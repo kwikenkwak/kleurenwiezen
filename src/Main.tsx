@@ -1,10 +1,11 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
-import Header from './Header'
-import Body from './Body'
 import { StatusBar } from 'react-native'
-import { useStore } from './store'
+
+import Body from './Body'
 import { colors } from './colors'
+import Header from './Header'
+import { useStore } from './store'
 
 const Main = () => {
   const { _hasHydrated } = useStore()

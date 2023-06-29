@@ -1,11 +1,12 @@
 import React, { ReactElement } from 'react'
-import { View, Text, StyleSheet, ScrollView } from 'react-native'
-import Button from './Button'
-import PrevSvg from '../icons/prev.svg'
-import NextSvg from '../icons/next.svg'
-import { colors } from './colors'
-import CheckSvg from '../icons/selected.svg'
+import { View, Text, StyleSheet } from 'react-native'
 import { Shadow } from 'react-native-shadow-2'
+
+import NextSvg from '../icons/next.svg'
+import PrevSvg from '../icons/prev.svg'
+
+import Button from './Button'
+import { colors } from './colors'
 
 export interface StandardModalPageProps {
   title: string
@@ -103,9 +104,6 @@ const styles = StyleSheet.create({
   },
   prev: {
     marginRight: 'auto',
-  },
-  finish: {
-    marginLeft: 'auto',
   },
 })
 

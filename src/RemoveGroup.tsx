@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
+
 import CrossSvg from '../icons/close.svg'
-import Modal from './Modal'
+
 import { colors } from './colors'
+import Modal from './Modal'
 import StandardModalPage from './StandardModalPage'
 import { useGames } from './store'
 
@@ -53,11 +55,6 @@ export const RemoveGroup = ({ name }: RemoveGroupProps) => {
 }
 
 const styles = StyleSheet.create({
-  input: {
-    marginTop: 10,
-    fontSize: 20,
-    borderBottomWidth: 3,
-  },
   wrapper: {
     height: '100%',
     gap: 10,

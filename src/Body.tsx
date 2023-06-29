@@ -1,15 +1,18 @@
+import React from 'react'
 import { useState } from 'react'
 import { Text, ScrollView, StyleSheet, View, TouchableNativeFeedback } from 'react-native'
-import RemoveSvg from '../icons/close.svg'
-import { Player, useCurrentGame } from './store'
-import BorderRightSvg from '../icons/borderright.svg'
-import BorderLeftSvg from '../icons/borderleft.svg'
-import FlagSvg from '../icons/flag.svg'
-import { colors } from './colors'
-import { AddGame } from './AddGame'
 import { Shadow } from 'react-native-shadow-2'
-import EditPlayer from './EditPlayer'
+
+import BorderLeftSvg from '../icons/borderleft.svg'
+import BorderRightSvg from '../icons/borderright.svg'
+import RemoveSvg from '../icons/close.svg'
+import FlagSvg from '../icons/flag.svg'
+
+import { AddGame } from './AddGame'
 import Button from './Button'
+import { colors } from './colors'
+import EditPlayer from './EditPlayer'
+import { Player, useCurrentGame } from './store'
 
 interface PlayerScoreProps {
   player: Player
@@ -101,15 +104,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0,
   },
-  borderLeft: {
-    width: 43,
-    height: 26,
-    borderLeftWidth: 3,
-    borderBottomWidth: 3,
-    borderColor: colors.PRIMARY,
-    borderRadius: 3,
-  },
-
   nameAndFlag: {
     flexDirection: 'row',
     gap: 10,

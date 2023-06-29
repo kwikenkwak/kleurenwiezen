@@ -1,8 +1,9 @@
+import React from 'react'
+
+import Choose from './Choose'
+import { Multiselect } from './Multiselect'
 import { TroelData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
-import React from 'react'
-import { Multiselect } from './Multiselect'
-import Choose from './Choose'
 
 export interface TroelPageProps {
   data: TroelData
@@ -20,7 +21,7 @@ export const TroelSpelers = ({ data, setData, toNext, toPrev }: TroelPageProps) 
   return (
     <StandardModalPage
       title={`Wie gingen er samen troel?`}
-      toNext={data[2].length == 2 ? toNext : undefined}
+      toNext={data[2].length === 2 ? toNext : undefined}
       toPrev={toPrev}
       body={
         <Multiselect
@@ -36,7 +37,7 @@ export const TroelSpelers = ({ data, setData, toNext, toPrev }: TroelPageProps) 
 export const TroelSlagenTarget = ({ data, setData, toNext, toPrev }: TroelPageProps) => {
   const onChange = (opt: string) => {
     const newData = data.slice() as TroelData
-    newData[3] = opt == 'Ja' ? true : false
+    newData[3] = opt === 'Ja' ? true : false
     toNext()
     setData(newData)
   }

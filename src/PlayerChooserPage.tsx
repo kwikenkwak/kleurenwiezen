@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { Multiselect } from './Multiselect'
 import { GameData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
@@ -24,7 +25,7 @@ export const PlayerChooserPage = ({ data, setData, toNext, toPrev }: PlayerChoos
     toNext()
   }
   const selected = data[1]
-  const canGoToNext = data[1].length == 4
+  const canGoToNext = data[1].length === 4
   return (
     <StandardModalPage
       title={'Wie speelde er mee?'}

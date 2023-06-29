@@ -1,12 +1,12 @@
+import { Picker } from '@react-native-picker/picker'
 import React, { useState } from 'react'
-import AddPersonSvg from '../icons/addperson.svg'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
+
+import { colors } from './colors'
 import Input from './Input'
 import Modal from './Modal'
-import { colors } from './colors'
 import StandardModalPage from './StandardModalPage'
 import { useCurrentGame } from './store'
-import { Picker } from '@react-native-picker/picker'
 
 export interface EditPlayerProps {
   player: string
@@ -16,17 +16,17 @@ export interface EditPlayerProps {
 
 export const EditPlayer = ({ player, visible, setVisible }: EditPlayerProps) => {
   const { players, editPlayers } = useCurrentGame()
-  const oldPos = players.findIndex(p => p.name == player) + 1
+  const oldPos = players.findIndex(p => p.name === player) + 1
   const [newName, setNewName] = useState(player)
-  const [newScore, setNewScore] = useState(players.find(p => p.name == player)!.score)
+  const [newScore, setNewScore] = useState(players[oldPos].score)
   const [newPos, setNewPos] = useState(oldPos)
-  const isCorrect = newName != ''
+  const isCorrect = newName !== ''
   const onConfirmChanges = () => {
     const newPlayers = players.map(p => ({ ...p }))
     const changed = newPlayers[oldPos - 1]
     changed.score = newScore
     changed.name = newName
-    if (newPos != oldPos) {
+    if (newPos !== oldPos) {
       newPlayers.splice(oldPos - 1, 1)
       newPlayers.splice(newPos - 1, 0, changed)
     }

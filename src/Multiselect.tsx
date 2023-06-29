@@ -1,5 +1,6 @@
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
+
 import Option from './Option'
 
 export interface MultiSelectProps {
@@ -10,7 +11,7 @@ export interface MultiSelectProps {
 
 export const Multiselect = ({ options, selected, onChange }: MultiSelectProps) => {
   const change = (opt: string) => {
-    if (selected.includes(opt)) onChange(selected.filter(p => opt != p))
+    if (selected.includes(opt)) onChange(selected.filter(p => opt !== p))
     else {
       const newSelected = [...selected, opt]
       newSelected.sort((a, b) => options.indexOf(a) - options.indexOf(b))

@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import ManageGroupsSvg from '../icons/managegroups.svg'
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
-import Modal from './Modal'
-import SelectedSvg from '../icons/selected.svg'
+
+import ManageGroupsSvg from '../icons/managegroups.svg'
 import NextSvg from '../icons/next.svg'
-import StandardModalPage from './StandardModalPage'
-import { colors } from './colors'
-import { useGames } from './store'
+import SelectedSvg from '../icons/selected.svg'
+
 import AddGroup from './AddGroup'
+import { colors } from './colors'
+import Modal from './Modal'
 import RemoveGroup from './RemoveGroup'
+import StandardModalPage from './StandardModalPage'
+import { useGames } from './store'
 
 export const ManageGames = () => {
   const [modalVisible, setModalVisible] = useState(false)
@@ -40,10 +42,10 @@ export const ManageGames = () => {
                     >
                       <View style={styles.group}>
                         <Text style={styles.gameTitle}>{game}</Text>
-                        {currentGame == game && <SelectedSvg color={colors.TINT} />}
+                        {currentGame === game && <SelectedSvg color={colors.TINT} />}
                       </View>
                       <View style={styles.group}>
-                        {currentGame != game && <NextSvg onPress={() => selectGroup(game)} />}
+                        {currentGame !== game && <NextSvg onPress={() => selectGroup(game)} />}
                         <RemoveGroup name={game} />
                       </View>
                     </Pressable>
@@ -85,11 +87,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
 
-  input: {
-    marginTop: 60,
-    fontSize: 20,
-    borderBottomWidth: 3,
-  },
   gamesWrapper: {
     gap: 7,
     flexGrow: 1,
@@ -97,17 +94,6 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     height: 352,
-  },
-  button: {
-    borderRadius: 5,
-    padding: 10,
-    marginTop: 70,
-    backgroundColor: colors.BACKGROUND,
-    borderWidth: 3,
-  },
-  textStyle: {
-    color: colors.PRIMARY,
-    textAlign: 'center',
   },
 })
 

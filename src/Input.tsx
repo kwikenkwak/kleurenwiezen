@@ -1,5 +1,6 @@
 import React from 'react'
 import { TextInput, TextInputProps, StyleSheet } from 'react-native'
+
 import { colors } from './colors'
 
 export const Input = (props: TextInputProps) => (

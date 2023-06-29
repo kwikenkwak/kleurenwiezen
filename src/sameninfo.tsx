@@ -1,8 +1,9 @@
+import React from 'react'
+
+import Choose from './Choose'
+import { Multiselect } from './Multiselect'
 import { SamenData } from './pointcalculation'
 import StandardModalPage from './StandardModalPage'
-import React from 'react'
-import { Multiselect } from './Multiselect'
-import Choose from './Choose'
 
 export interface SamenPageProps {
   data: SamenData
@@ -20,7 +21,7 @@ export const SamenSpelers = ({ data, setData, toNext, toPrev }: SamenPageProps) 
   return (
     <StandardModalPage
       title={`Wie gingen er samen?`}
-      toNext={data[2].length == 2 ? toNext : undefined}
+      toNext={data[2].length === 2 ? toNext : undefined}
       toPrev={toPrev}
       body={
         <Multiselect

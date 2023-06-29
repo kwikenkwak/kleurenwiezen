@@ -1,8 +1,10 @@
 import React from 'react'
+import { Pressable, StyleSheet, Text } from 'react-native'
+
 import SelectedSvg from '../icons/selected.svg'
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import { colors } from './colors'
 import NextSvg from '../icons/smallnext.svg'
+
+import { colors } from './colors'
 
 export interface OptionProps {
   value: string

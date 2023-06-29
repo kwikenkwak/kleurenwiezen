@@ -1,40 +1,46 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import Button from './Button'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { StyleSheet } from 'react-native'
+
 import AddGameSvg from '../icons/addgame.svg'
+
+import Button from './Button'
+import { colors } from './colors'
+import { createConditionalPages } from './conditionalPages'
+import { GamemodeChooserPage } from './GamemodeChooserPage'
+import GameResultPage from './GameResultPage'
 import Modal from './Modal'
 import PlayerChooserPage from './PlayerChooserPage'
 import { GameData, getDefaultData } from './pointcalculation'
-import { useCurrentGame } from './store'
-import { GamemodeChooserPage } from './GamemodeChooserPage'
-import { createConditionalPages } from './conditionalPages'
-import GameResultPage from './GameResultPage'
-import { StyleSheet } from 'react-native'
-import { colors } from './colors'
+import { useCurrentGame, useLastPlayerChoose } from './store'
 
 export const AddGame = () => {
-  const { gameName, previousPlayers, addPoints, lastPlayerChoose } = useCurrentGame()
+  const { gameName, addPoints } = useCurrentGame()
+  const { previousPlayers, skipPlayerChoosing } = useLastPlayerChoose()
   const defaultData: GameData = ['troel', previousPlayers, [], false, 9]
   const [data, setData] = useState<GameData>(defaultData)
   const [modalVisible, setModalVisible] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
+  const gameMode = data[0]
 
   useEffect(() => {
     // When the game changes reset the selected players to the previousPlayers of this game
-    setData(getDefaultData(data[0], previousPlayers))
-  }, [gameName])
+    setData(getDefaultData(gameMode, previousPlayers))
+  }, [gameName, previousPlayers, gameMode])
 
-  const toNext = () => {
+  const toNext = useCallback(() => {
     setCurrentPage(p => {
-      const hoursPassedSincePlayerChoose =
-        (new Date().getTime() - new Date(lastPlayerChoose).getTime()) / 3_600_000
-      return p == 0 && hoursPassedSincePlayerChoose < 2 ? p + 2 : p + 1
+      return p === 0 && skipPlayerChoosing ? p + 2 : p + 1
     })
-  }
+  }, [skipPlayerChoosing])
+
   const toPrev = () => {
     setCurrentPage(p => p - 1)
   }
 
-  const conditionalPages = useMemo(() => createConditionalPages(data, setData, toNext, toPrev), [data])
+  const conditionalPages = useMemo(
+    () => createConditionalPages(data, setData, toNext, toPrev),
+    [data, toNext]
+  )
 
   const onFinish = () => {
     setCurrentPage(0)

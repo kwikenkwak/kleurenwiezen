@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
-import { useGames } from './store'
-import AddGroupSvg from '../icons/addgroup.svg'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
+
+import AddGroupSvg from '../icons/addgroup.svg'
+
+import { colors } from './colors'
 import Input from './Input'
 import Modal from './Modal'
-import { colors } from './colors'
 import StandardModalPage from './StandardModalPage'
+import { useGames } from './store'
 
 export const AddGroup = () => {
   const [modalVisible, setModalVisible] = useState(false)

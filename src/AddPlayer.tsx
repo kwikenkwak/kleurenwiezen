@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
-import AddPersonSvg from '../icons/addperson.svg'
-import { Player } from './store'
 import { View, Text, Pressable, StyleSheet } from 'react-native'
+
+import AddPersonSvg from '../icons/addperson.svg'
+
+import Button from './Button'
+import { colors } from './colors'
 import Input from './Input'
 import Modal from './Modal'
-import { colors } from './colors'
 import StandardModalPage from './StandardModalPage'
-import Button from './Button'
+import { Player } from './store'
 
 export interface AddPlayerProps {
   add: (player: Player) => void

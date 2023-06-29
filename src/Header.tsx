@@ -1,13 +1,15 @@
 import React from 'react'
+import { StyleSheet, View } from 'react-native'
+import { Shadow } from 'react-native-shadow-2'
+
 import RedoSvg from '../icons/redo.svg'
 import UndoSvg from '../icons/undo.svg'
-import { StyleSheet, View } from 'react-native'
-import Button from './Button'
-import { Shadow } from 'react-native-shadow-2'
-import { useCurrentGame } from './store'
-import { colors } from './colors'
+
 import AddPlayer from './AddPlayer'
+import Button from './Button'
+import { colors } from './colors'
 import ManageGames from './ManageGames'
+import { useCurrentGame } from './store'
 
 const Header = () => {
   const { redo, undo, canRedo, canUndo, addPlayer } = useCurrentGame()

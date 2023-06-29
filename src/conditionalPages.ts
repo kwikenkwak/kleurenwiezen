@@ -1,8 +1,8 @@
-import { AlleenData, GameData, MiserieData, SamenData, SoloData, TroelData } from './pointcalculation'
-import { createSoloInfo } from './soloinfo'
-import { createMiserieInfo } from './miserieinfo'
 import { createAlleenInfo } from './alleeninfo'
+import { createMiserieInfo } from './miserieinfo'
+import { AlleenData, GameData, MiserieData, SamenData, SoloData, TroelData } from './pointcalculation'
 import { createSamenInfo } from './sameninfo'
+import { createSoloInfo } from './soloinfo'
 import { createTroelInfo } from './troelinfo'
 
 export const createConditionalPages = (
@@ -14,13 +14,13 @@ export const createConditionalPages = (
   const gamemode = data[0]
   if (['kleine miserie', 'grote miserie', 'open miserie'].includes(gamemode)) {
     return createMiserieInfo(data as MiserieData, setData, toNext, toPrev)
-  } else if (gamemode == 'solo slim') {
+  } else if (gamemode === 'solo slim') {
     return createSoloInfo(data as SoloData, setData, toNext, toPrev)
-  } else if (gamemode == 'alleen' || gamemode == 'abondance') {
+  } else if (gamemode === 'alleen' || gamemode === 'abondance') {
     return createAlleenInfo(data as AlleenData, setData, toNext, toPrev)
-  } else if (gamemode == 'samen') {
+  } else if (gamemode === 'samen') {
     return createSamenInfo(data as SamenData, setData, toNext, toPrev)
-  } else if (gamemode == 'troel') {
+  } else if (gamemode === 'troel') {
     return createTroelInfo(data as TroelData, setData, toNext, toPrev)
   }
   return []
