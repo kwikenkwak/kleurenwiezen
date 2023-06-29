@@ -18,7 +18,7 @@ export const EditPlayer = ({ player, visible, setVisible }: EditPlayerProps) => 
   const { players, editPlayers } = useCurrentGame()
   const oldPos = players.findIndex(p => p.name === player) + 1
   const [newName, setNewName] = useState(player)
-  const [newScore, setNewScore] = useState(players[oldPos].score)
+  const [newScore, setNewScore] = useState(players[oldPos - 1].score)
   const [newPos, setNewPos] = useState(oldPos)
   const isCorrect = newName !== ''
   const onConfirmChanges = () => {
