@@ -13,7 +13,7 @@ export const GamemodeChooserPage = ({ setData, data, toNext }: GamemodeChooserPa
   const onChoose = (value: string) => {
     if (data[0] == value.toLowerCase()) toNext()
     else {
-      setData(getDefaultData(value.toLowerCase() as gameType, data))
+      setData(getDefaultData(value.toLowerCase() as gameType, data[1]))
       toNext()
     }
   }

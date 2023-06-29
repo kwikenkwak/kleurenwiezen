@@ -172,6 +172,7 @@ export const useCurrentGame = () => {
 
   return {
     ...game,
+    gameName: currentGame,
     winners,
     players,
     addNewScore: addState,

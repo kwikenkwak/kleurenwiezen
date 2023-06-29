@@ -5,7 +5,6 @@ import { colors } from './colors'
 export const Input = (props: TextInputProps) => (
   <TextInput
     style={styles.input}
-    placeholderTextColor={colors.SECONDARY}
     underlineColorAndroid={'#0000'}
     {...props}
   />

@@ -51,16 +51,3 @@ rules:
         classPropertiesAllowed: false,
       },
     ]
-
-overrides:
-  -
-    files: 
-      - "*.graphql"
-    parser: "@graphql-eslint/eslint-plugin"
-    plugins: 
-      - "@graphql-eslint"
-    extends:
-      - "plugin:@graphql-eslint/operations-recommended"
-    rules:
-      "@graphql-eslint/no-deprecated": "warn"
-      "@graphql-eslint/naming-convention": "warn"

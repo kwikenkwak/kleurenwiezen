@@ -27,11 +27,8 @@ export const EditPlayer = ({ player, visible, setVisible }: EditPlayerProps) => 
     changed.score = newScore
     changed.name = newName
     if (newPos != oldPos) {
-      console.log(newPlayers)
       newPlayers.splice(oldPos - 1, 1)
-      console.log(newPlayers)
       newPlayers.splice(newPos - 1, 0, changed)
-      console.log(newPlayers)
     }
     editPlayers(newPlayers)
   }

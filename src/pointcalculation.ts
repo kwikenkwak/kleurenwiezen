@@ -27,8 +27,7 @@ export type TroelData = ['troel', string[], string[], boolean, number]
 
 export type GameData = MiserieData | SoloData | AlleenData | TroelData | SamenData
 
-export const getDefaultData = (value: gameType, data: GameData): GameData => {
-  const players = data[1]
+export const getDefaultData = (value: gameType, players: string[]): GameData => {
   if (value == 'kleine miserie' || value == 'grote miserie' || value == 'open miserie')
     return [value, players, [], []]
   else if (value == 'solo slim') return [value, players, '', false]
@@ -61,14 +60,12 @@ const distrPoints = (players: string[], othersPoints: number, goers: string[]) =
 }
 
 const mergePoints = (data: PointsChange[]) => {
-  console.log(data)
   const res = data[0]
   data.slice(1).forEach(points => {
     Object.keys(points).forEach(player => {
       res[player] += points[player]
     })
   })
-  console.log(res)
   return res
 }
 

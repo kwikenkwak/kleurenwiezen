@@ -12,15 +12,16 @@ import { StyleSheet } from 'react-native'
 import { colors } from './colors'
 
 export const AddGame = () => {
-  const { previousPlayers, addPoints, lastPlayerChoose } = useCurrentGame()
+  const { gameName, previousPlayers, addPoints, lastPlayerChoose } = useCurrentGame()
   const defaultData: GameData = ['troel', previousPlayers, [], false, 9]
   const [data, setData] = useState<GameData>(defaultData)
   const [modalVisible, setModalVisible] = useState(false)
   const [currentPage, setCurrentPage] = useState(0)
 
   useEffect(() => {
-    setData(getDefaultData(data[0], data))
-  }, [previousPlayers])
+    // When the game changes reset the selected players to the previousPlayers of this game
+    setData(getDefaultData(data[0], previousPlayers))
+  }, [gameName])
 
   const toNext = () => {
     setCurrentPage(p => {
