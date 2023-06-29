@@ -59,8 +59,8 @@ export const EditPlayer = ({ player, visible, setVisible }: EditPlayerProps) => 
                   autoFocus={true}
                   placeholder={'Score'}
                   inputMode={'numeric'}
-                  onChangeText={s => setNewScore(Number(s))}
-                  value={newScore.toString()}
+                  onChangeText={s => !Number.isNaN(Number(s)) && setNewScore(Number(s))}
+                  defaultValue={newScore.toString()}
                   style={styles.input}
                 />
               </View>
